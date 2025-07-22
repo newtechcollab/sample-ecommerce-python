@@ -37,6 +37,6 @@ def get_products():
 @catalog_bp.route('/catalog/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
-    if product is None:
-        return jsonify({'error': 'Product not found'}), 404
+    #if product is None:
+    #    return jsonify({'error': 'Product not found'}), 404
     return jsonify(product)
