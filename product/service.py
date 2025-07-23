@@ -13,10 +13,18 @@ products = [
 next_product_id = 6
 
 @product_bp.route('/product/products', methods=['GET'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def get_products():
     return jsonify(products)
 
 @product_bp.route('/product/products/<int:product_id>', methods=['GET'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def get_product(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
     #if product is None:
@@ -24,6 +32,10 @@ def get_product(product_id):
     return jsonify(product)
 
 @product_bp.route('/product/products', methods=['POST'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def create_product():
     global next_product_id
     data = request.get_json()
@@ -40,6 +52,10 @@ def create_product():
     return jsonify(new_product), 201
 
 @product_bp.route('/product/products/<int:product_id>', methods=['PUT'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def update_product(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
     if product is None:
@@ -49,6 +65,10 @@ def update_product(product_id):
     return jsonify(product)
 
 @product_bp.route('/product/products/<int:product_id>', methods=['DELETE'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def delete_product(product_id):
     product_index = next((i for i, p in enumerate(products) if p['id'] == product_id), None)
     if product_index is None:
