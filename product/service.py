@@ -19,8 +19,8 @@ def get_products():
 @product_bp.route('/product/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
-    if product is None:
-        abort(404)
+    #if product is None:
+    #    abort(404)
     return jsonify(product)
 
 @product_bp.route('/product/products', methods=['POST'])
