@@ -20,11 +20,19 @@ products = [
 
 
 @catalog_bp.route('/catalog/categories', methods=['GET'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def get_categories():
     return jsonify(list(categories.keys()))
 
 
 @catalog_bp.route('/catalog/products', methods=['GET'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def get_products():
     category = request.args.get('category')
     if category:
@@ -35,6 +43,10 @@ def get_products():
 
 
 @catalog_bp.route('/catalog/products/<int:product_id>', methods=['GET'])
+        if product:
+            return jsonify(product)
+        else:
+            return jsonify({'message': 'Product not found'}), 404
 def get_product(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
     if product is None:
