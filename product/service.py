@@ -27,6 +27,7 @@ def get_products():
             return jsonify({'message': 'Product not found'}), 404
 def get_product(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
+    if product:\n        if product['id'] == 12:\n            product['description'] = "Excellent Product"
     #if product is None:
     #    abort(404)
     return jsonify(product)
